@@ -1,19 +1,19 @@
 package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
-import jm.task.core.jdbc.util.JdbcUtils;
+import jm.task.core.jdbc.util.Util;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO: вынести блоки подключения куда нибудь
-public class UserDaoJDBCImpl implements UserDao, AutoCloseable {
+
+public class UserDaoJDBCImpl implements UserDao {
     private final Connection connection;
 
     public UserDaoJDBCImpl() {
         try {
-            JdbcUtils util = new JdbcUtils();
+            Util util = new Util();
             this.connection = util.getConnection();
         } catch (Exception e) {
             throw new RuntimeException("Failed to establish connection", e);
@@ -94,15 +94,6 @@ public class UserDaoJDBCImpl implements UserDao, AutoCloseable {
         }
     }
 
-    @Override
-    public void close() {
-        try {
-            if (connection != null && !connection.isClosed()) {
-                connection.close();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Failed to close connection", e);
-        }
-    }
+
 }
 
