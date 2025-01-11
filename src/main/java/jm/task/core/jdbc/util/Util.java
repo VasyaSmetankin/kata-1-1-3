@@ -22,7 +22,6 @@ public class Util {
                 configuration.setProperty("hibernate.connection.username", USERNAME);
                 configuration.setProperty("hibernate.connection.password", PASSWORD);
                 configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-                configuration.setProperty("hibernate.hbm2ddl.auto", "update");
                 configuration.setProperty("hibernate.show_sql", "true");
                 configuration.setProperty("hibernate.format_sql", "true");
                 configuration.addAnnotatedClass(User.class);
@@ -44,6 +43,4 @@ public class Util {
         }
         return null;
     }
-
-
 }
